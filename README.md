@@ -2,7 +2,7 @@ Andy Steven Diaz Montenegro
 GitHub: BettleJuice-cmd
 
 Carlos Fernando Torres Gonzalez
-GitHub: CarlosTorres2205
+GitHub: carlostorres2205
 
 Alexa Sofia Loasiga Torrez
 GitHub: asloasiga
