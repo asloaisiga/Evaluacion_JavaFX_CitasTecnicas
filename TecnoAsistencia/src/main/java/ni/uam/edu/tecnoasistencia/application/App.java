@@ -1,4 +1,9 @@
 package ni.uam.edu.tecnoasistencia.application;
+import ni.uam.edu.tecnoasistencia.dao.ClienteDAO;
+import ni.uam.edu.tecnoasistencia.models.Cliente;
+
+import java.sql.SQLException;
+import java.util.List;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -37,6 +42,8 @@ public class App extends Application {
     public static void app(String[] args) {
         launch(args);
     }
+
+
 
 
 }
