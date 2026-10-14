@@ -50,21 +50,3 @@ La base se llama `gestion_citas` y utiliza dos tablas: `cliente` y `cita_tecnica
 ## Pruebas realizadas
 
 Se verificó el registro, actualización, eliminación y búsqueda de clientes; el registro, actualización y eliminación de citas; los filtros por estado y fecha; el rechazo de correos repetidos y campos vacíos; el bloqueo de eliminación de clientes con citas; y la permanencia de datos después de cerrar y abrir el sistema.
-
-## Capturas de funcionamiento
-
-### Menú principal
-
-![Menú principal](evidencias/menu-principal.png)
-
-### Gestión de clientes
-
-![Gestión de clientes](evidencias/gestion-clientes.png)
-
-### Validación de campos
-
-![Validación de campos obligatorios](evidencias/validacion-campos.png)
-
-### Gestión de citas técnicas
-
-![Gestión de citas técnicas](evidencias/gestion-citas.png)
