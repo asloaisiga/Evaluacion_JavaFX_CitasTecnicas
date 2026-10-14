@@ -8,8 +8,8 @@ Es un sistema desarrollado con JavaFX y PostgreSQL para registrar clientes y adm
 
 - **Andy Steven Diaz Montenegro** — GitHub: [BettleJuice-cmd](https://github.com/BettleJuice-cmd). Creó la clase principal de la aplicación, el modelo `Cliente`, `ClienteDAO` y la conexión de Java con PostgreSQL mediante JDBC.
 - **Carlos Fernando Torres Gonzalez** — GitHub: [carlostorres2205](https://github.com/carlostorres2205). Creó el modelo `CitaTecnica`, implementó `CitaTecnicaDAO` y diseñó la interfaz inicial de citas con su formulario, tabla, botones y filtros.
-- **Alexa Sofia Loasiga Torrez** — GitHub: [asloasiga](https://github.com/asloasiga). Implementó el controlador de citas técnicas, la búsqueda de clientes desde el formulario y la conservación del cliente seleccionado.
-- **Adolfo Carlos Ramirez Arauz** — GitHub: [MrNacatamal](https://github.com/MrNacatamal). Implementó el controlador y la interfaz de clientes, sus validaciones, la navegación entre módulos, las pruebas y la documentación.
+- **Alexa Sofia Loasiga Torrez** — GitHub: [asloasiga](https://github.com/asloaisiga). Implementó el controlador de citas técnicas, la búsqueda de clientes desde el formulario y la conservación del cliente seleccionado.
+- **Adolfo Carlos Ramirez Arauz** — GitHub: [MrNacatamal](https://github.com/MrNacatamal09). Implementó el controlador y la interfaz de clientes, sus validaciones, la navegación entre módulos, las pruebas y la documentación.
 
 ## Tecnologías utilizadas
 
