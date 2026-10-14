@@ -1,0 +1,94 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane prefHeight="650.0" prefWidth="1050.0"
+            xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="ni.uam.edu.tecnoasistencia.controller.ClienteController">
+
+    <top>
+        <VBox spacing="5.0" style="-fx-background-color: #263238;" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets top="20" bottom="20" left="25" right="25"/>
+            </padding>
+            <Label text="Gestión de Clientes"
+                   style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+            <Label text="Registro y administración de clientes"
+                   style="-fx-font-size: 13px; -fx-text-fill: #CFD8DC;"/>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox spacing="15.0" style="-fx-background-color: #F5F6FA;">
+            <padding>
+                <Insets top="20" bottom="20" left="25" right="25"/>
+            </padding>
+
+            <GridPane hgap="15.0" vgap="12.0">
+                <columnConstraints>
+                    <ColumnConstraints percentWidth="15"/>
+                    <ColumnConstraints percentWidth="35"/>
+                    <ColumnConstraints percentWidth="15"/>
+                    <ColumnConstraints percentWidth="35"/>
+                </columnConstraints>
+
+                <Label text="Nombres:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                <TextField fx:id="txtNombres" promptText="Ingrese los nombres"
+                           GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                <Label text="Apellidos:" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+                <TextField fx:id="txtApellidos" promptText="Ingrese los apellidos"
+                           GridPane.columnIndex="3" GridPane.rowIndex="0"/>
+
+                <Label text="Teléfono:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                <TextField fx:id="txtTelefono" promptText="Ejemplo: 88881111"
+                           GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                <Label text="Correo:" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                <TextField fx:id="txtCorreo" promptText="Ejemplo: cliente@correo.com"
+                           GridPane.columnIndex="3" GridPane.rowIndex="1"/>
+
+                <Label text="Activo:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                <CheckBox fx:id="chkActivo" text="Cliente activo" selected="true"
+                          GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+            </GridPane>
+
+            <HBox spacing="10.0">
+                <Button text="Guardar" onAction="#guardarCliente" prefWidth="110"/>
+                <Button text="Actualizar" onAction="#actualizarCliente" prefWidth="110"/>
+                <Button text="Eliminar" onAction="#eliminarCliente" prefWidth="110"/>
+                <Button text="Limpiar" onAction="#limpiarFormulario" prefWidth="110"/>
+            </HBox>
+
+            <Separator/>
+
+            <Label text="Listado de clientes"
+                   style="-fx-font-size: 17px; -fx-font-weight: bold;"/>
+
+            <HBox alignment="CENTER_LEFT" spacing="10.0">
+                <Label text="Buscar cliente:"/>
+                <TextField fx:id="txtBuscar" prefWidth="350"
+                           promptText="Buscar por nombre, apellido o correo"/>
+                <Button text="Buscar" onAction="#buscarClientes"/>
+                <Button text="Limpiar búsqueda" onAction="#limpiarBusqueda"/>
+            </HBox>
+
+            <TableView fx:id="tablaClientes" VBox.vgrow="ALWAYS"
+                       onMouseClicked="#seleccionarCliente">
+                <columns>
+                    <TableColumn fx:id="colId" text="ID" prefWidth="55"/>
+                    <TableColumn fx:id="colNombres" text="Nombres" prefWidth="180"/>
+                    <TableColumn fx:id="colApellidos" text="Apellidos" prefWidth="180"/>
+                    <TableColumn fx:id="colTelefono" text="Teléfono" prefWidth="130"/>
+                    <TableColumn fx:id="colCorreo" text="Correo" prefWidth="260"/>
+                    <TableColumn fx:id="colActivo" text="Activo" prefWidth="100"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+
+</BorderPane>
