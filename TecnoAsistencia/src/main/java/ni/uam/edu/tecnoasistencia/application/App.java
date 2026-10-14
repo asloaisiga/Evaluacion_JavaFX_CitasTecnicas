@@ -39,7 +39,7 @@ public class App extends Application {
         }
     }
 
-    public static void app(String[] args) {
+    public static void main(String[] args) {
         launch(args);
     }
 
