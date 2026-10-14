@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane prefHeight="550.0" prefWidth="850.0"
+            xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="ni.uam.edu.tecnoasistencia.controller.MenuPrincipalController">
+
+    <top>
+        <VBox spacing="5.0" style="-fx-background-color: #263238;" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets top="25" bottom="25" left="30" right="30"/>
+            </padding>
+            <Label text="TecnoAsistencia"
+                   style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+            <Label text="Sistema de gestión de clientes y citas técnicas"
+                   style="-fx-font-size: 14px; -fx-text-fill: #CFD8DC;"/>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox alignment="CENTER" spacing="25.0" style="-fx-background-color: #F5F6FA;">
+            <padding>
+                <Insets top="30" bottom="30" left="30" right="30"/>
+            </padding>
+
+            <Label text="Menú principal"
+                   style="-fx-font-size: 22px; -fx-font-weight: bold;"/>
+
+            <HBox alignment="CENTER" spacing="25.0">
+                <VBox alignment="CENTER" spacing="15.0" prefWidth="300"
+                      style="-fx-background-color: white; -fx-background-radius: 8; -fx-padding: 25;">
+                    <Label text="Gestión de Clientes"
+                           style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+                    <Label text="Registrar, consultar y administrar clientes"
+                           wrapText="true" alignment="CENTER"
+                           style="-fx-font-size: 13px; -fx-text-fill: #607D8B;"/>
+                    <Button text="Abrir clientes" prefWidth="170"
+                            onAction="#abrirClientes"/>
+                </VBox>
+
+                <VBox alignment="CENTER" spacing="15.0" prefWidth="300"
+                      style="-fx-background-color: white; -fx-background-radius: 8; -fx-padding: 25;">
+                    <Label text="Citas Técnicas"
+                           style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+                    <Label text="Programar y administrar citas de servicio"
+                           wrapText="true" alignment="CENTER"
+                           style="-fx-font-size: 13px; -fx-text-fill: #607D8B;"/>
+                    <Button text="Abrir citas" prefWidth="170"
+                            onAction="#abrirCitas"/>
+                </VBox>
+            </HBox>
+        </VBox>
+    </center>
+
+    <bottom>
+        <HBox alignment="CENTER" style="-fx-background-color: #ECEFF1; -fx-padding: 12;">
+            <Label text="TecnoAsistencia - Sistema de gestión"
+                   style="-fx-font-size: 12px; -fx-text-fill: #607D8B;"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>
