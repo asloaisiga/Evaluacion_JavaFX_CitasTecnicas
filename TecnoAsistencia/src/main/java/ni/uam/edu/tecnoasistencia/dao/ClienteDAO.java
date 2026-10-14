@@ -274,4 +274,46 @@ public class ClienteDAO {
 
         return false;
     }
+
+    public List<Cliente> buscarPorNombre(String texto) throws SQLException {
+
+        List<Cliente> clientes = new ArrayList<>();
+
+        String sql = """
+            SELECT id, nombres, apellidos, telefono, correo, activo
+            FROM cliente
+            WHERE nombres ILIKE ?
+               OR apellidos ILIKE ?
+               OR CONCAT(nombres, ' ', apellidos) ILIKE ?
+            ORDER BY nombres, apellidos
+            LIMIT 20
+            """;
+
+        try (Connection connection = conexionBD.getConnection();
+             PreparedStatement ps = connection.prepareStatement(sql)) {
+
+            String busqueda = "%" + texto.trim() + "%";
+
+            ps.setString(1, busqueda);
+            ps.setString(2, busqueda);
+            ps.setString(3, busqueda);
+
+            try (ResultSet rs = ps.executeQuery()) {
+
+                while (rs.next()) {
+                    Cliente cliente = new Cliente();
+                    cliente.setId(rs.getInt("id"));
+                    cliente.setNombres(rs.getString("nombres"));
+                    cliente.setApellidos(rs.getString("apellidos"));
+                    cliente.setTelefono(rs.getString("telefono"));
+                    cliente.setCorreo(rs.getString("correo"));
+                    cliente.setActivo(rs.getBoolean("activo"));
+                    clientes.add(cliente);
+                }
+            }
+        }
+
+        return clientes;
+    }
+
 }

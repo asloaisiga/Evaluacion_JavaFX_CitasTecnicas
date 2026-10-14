@@ -35,10 +35,16 @@
                     <ColumnConstraints percentWidth="35"/>
                 </columnConstraints>
 
+
                 <Label text="Cliente:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-                <ComboBox fx:id="cbCliente" maxWidth="Infinity"
-                          promptText="Seleccione un cliente"
-                          GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                <VBox spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                    <TextField fx:id="txtBuscarCliente"
+                               promptText="Buscar cliente por nombre..."
+                               maxWidth="Infinity"/>
+                    <ComboBox fx:id="cbCliente"
+                              promptText="Seleccione un cliente"
+                              maxWidth="Infinity"/>
+                </VBox>
 
                 <Label text="Fecha:" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
                 <DatePicker fx:id="dpFecha" maxWidth="Infinity"

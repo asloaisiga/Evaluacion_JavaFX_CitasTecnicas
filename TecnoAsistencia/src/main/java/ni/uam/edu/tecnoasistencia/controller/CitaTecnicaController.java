@@ -24,6 +24,7 @@ public class CitaTecnicaController {
     @FXML private TextField txtTipoServicio;
     @FXML private ComboBox<String> cbEstado;
     @FXML private TextArea txtDescripcion;
+    @FXML private TextField txtBuscarCliente;
 
     @FXML private ComboBox<String> cbFiltroEstado;
     @FXML private DatePicker dpFiltroFecha;
@@ -81,7 +82,10 @@ public class CitaTecnicaController {
 
         tablaCitas.setItems(citas);
 
-        cargarClientes();
+        txtBuscarCliente.textProperty().addListener(
+                (observable, anterior, nuevo) -> buscarClientes()
+        );
+
         cargarCitas();
     }
 
@@ -240,11 +244,12 @@ public class CitaTecnicaController {
 
         if (cita == null) return;
 
-        cbCliente.getItems().stream()
-                .filter(cliente -> cliente.getId().equals(
-                        cita.getCliente().getId()))
-                .findFirst()
-                .ifPresent(cbCliente::setValue);
+        Cliente cliente = cita.getCliente();
+
+        txtBuscarCliente.setText(cliente.toString());
+
+        cbCliente.getItems().setAll(cliente);
+        cbCliente.setValue(cliente);
 
         dpFecha.setValue(cita.getFecha());
         txtHora.setText(cita.getHora().format(formatoHora));
@@ -304,5 +309,34 @@ public class CitaTecnicaController {
         alerta.setHeaderText(null);
         alerta.setContentText(mensaje);
         alerta.showAndWait();
+    }
+    @FXML
+    private void buscarClientes() {
+        String texto = txtBuscarCliente.getText().trim();
+
+        try {
+            if (texto.isEmpty()) {
+                cbCliente.getItems().clear();
+                cbCliente.setValue(null);
+                return;
+            }
+
+            cbCliente.setItems(FXCollections.observableArrayList(
+                    clienteDAO.buscarPorNombre(texto)
+            ));
+
+            cbCliente.setValue(null);
+
+            if (!cbCliente.getItems().isEmpty()) {
+                cbCliente.show();
+            } else {
+                cbCliente.hide();
+            }
+
+        } catch (SQLException e) {
+            mostrarAlerta(
+                    Alert.AlertType.ERROR, "Error al buscar clientes", e.getMessage()
+            );
+        }
     }
 }
