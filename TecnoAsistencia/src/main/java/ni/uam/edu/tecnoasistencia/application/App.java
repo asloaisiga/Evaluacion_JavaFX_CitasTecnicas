@@ -14,7 +14,7 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader loader = new FXMLLoader(
-                getClass().getResource("/fxml/cita-view.fxml")
+                getClass().getResource("/fxml/menu-principal.fxml")
         );
 
         Scene scene = new Scene(loader.load());
