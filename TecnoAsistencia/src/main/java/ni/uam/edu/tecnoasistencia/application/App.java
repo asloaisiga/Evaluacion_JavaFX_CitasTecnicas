@@ -1,49 +1,36 @@
-package ni.uam.edu.tecnoasistencia.application;
-import ni.uam.edu.tecnoasistencia.dao.ClienteDAO;
-import ni.uam.edu.tecnoasistencia.models.Cliente;
 
-import java.sql.SQLException;
-import java.util.List;
+package ni.uam.edu.tecnoasistencia.application;
 
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import ni.uam.edu.tecnoasistencia.util.conexionBD;
 
+import java.io.IOException;
+
 public class App extends Application {
+
     @Override
-    public void start(Stage primaryStage) {
-        Label label = new Label("¡Hola, JavaFX!");
-        StackPane root = new StackPane(label);
+    public void start(Stage stage) throws IOException {
+        FXMLLoader loader = new FXMLLoader(
+                getClass().getResource("/fxml/cita-view.fxml")
+        );
 
-        Scene scene = new Scene(root, 400, 200);
+        Scene scene = new Scene(loader.load());
 
-
-        primaryStage.setTitle("Mi aplicación JavaFX");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        stage.setTitle("TecnoAsistencia - Gestión de Citas Técnicas");
+        stage.setScene(scene);
+        stage.show();
 
         if (conexionBD.probarConexion()) {
-
-            System.out.println(
-                    "Conexión exitosa con PostgreSQL."
-            );
-
+            System.out.println("Conexión exitosa con PostgreSQL.");
         } else {
-
-            System.out.println(
-                    "No se pudo conectar con PostgreSQL."
-            );
+            System.out.println("No se pudo conectar con PostgreSQL.");
         }
     }
 
     public static void main(String[] args) {
         launch(args);
     }
-
-
-
-
 }

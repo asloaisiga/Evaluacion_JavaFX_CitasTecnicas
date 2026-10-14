@@ -1,3 +1,4 @@
+
 module ni.uam.edu.tecnoasistencia {
 
     requires javafx.controls;
@@ -6,6 +7,7 @@ module ni.uam.edu.tecnoasistencia {
     requires org.postgresql.jdbc;
 
     opens ni.uam.edu.tecnoasistencia.application to javafx.fxml;
+    opens ni.uam.edu.tecnoasistencia.controller to javafx.fxml;
 
     exports ni.uam.edu.tecnoasistencia.application;
 }
