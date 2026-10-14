@@ -310,24 +310,44 @@ public class CitaTecnicaController {
         alerta.setContentText(mensaje);
         alerta.showAndWait();
     }
+
     @FXML
     private void buscarClientes() {
         String texto = txtBuscarCliente.getText().trim();
 
-        try {
-            if (texto.isEmpty()) {
-                cbCliente.getItems().clear();
-                cbCliente.setValue(null);
-                return;
+        Cliente seleccionado = cbCliente.getValue();
+
+        if (texto.isEmpty()) {
+            cbCliente.getItems().clear();
+
+            if (seleccionado != null) {
+                cbCliente.getItems().add(seleccionado);
+                cbCliente.setValue(seleccionado);
             }
 
-            cbCliente.setItems(FXCollections.observableArrayList(
-                    clienteDAO.buscarPorNombre(texto)
-            ));
+            cbCliente.hide();
+            return;
+        }
 
-            cbCliente.setValue(null);
+        try {
+            ObservableList<Cliente> resultados =
+                    FXCollections.observableArrayList(
+                            clienteDAO.buscarPorNombre(texto)
+                    );
 
-            if (!cbCliente.getItems().isEmpty()) {
+            if (seleccionado != null &&
+                    resultados.stream().noneMatch(cliente ->
+                            cliente.getId().equals(seleccionado.getId()))) {
+                resultados.add(0, seleccionado);
+            }
+
+            cbCliente.setItems(resultados);
+
+            if (seleccionado != null) {
+                cbCliente.setValue(seleccionado);
+            }
+
+            if (!resultados.isEmpty()) {
                 cbCliente.show();
             } else {
                 cbCliente.hide();
@@ -335,8 +355,11 @@ public class CitaTecnicaController {
 
         } catch (SQLException e) {
             mostrarAlerta(
-                    Alert.AlertType.ERROR, "Error al buscar clientes", e.getMessage()
+                    Alert.AlertType.ERROR,
+                    "Error al buscar clientes",
+                    e.getMessage()
             );
         }
     }
+
 }
