@@ -316,4 +316,54 @@ public class ClienteDAO {
         return clientes;
     }
 
+
+    public boolean existeCorreoEnOtroCliente(String correo, int id) throws SQLException {
+
+        String sql = """
+            SELECT COUNT(*)
+            FROM cliente
+            WHERE LOWER(correo) = LOWER(?)
+            AND id <> ?
+            """;
+
+        try (Connection conexion = conexionBD.getConnection();
+             PreparedStatement ps = conexion.prepareStatement(sql)) {
+
+            ps.setString(1, correo);
+            ps.setInt(2, id);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt(1) > 0;
+                }
+            }
+        }
+
+        return false;
+    }
+
+
+    public boolean tieneCitasAsociadas(int id) throws SQLException {
+
+        String sql = """
+            SELECT COUNT(*)
+            FROM cita_tecnica
+            WHERE cliente_id = ?
+            """;
+
+        try (Connection conexion = conexionBD.getConnection();
+             PreparedStatement ps = conexion.prepareStatement(sql)) {
+
+            ps.setInt(1, id);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt(1) > 0;
+                }
+            }
+        }
+
+        return false;
+    }
+
 }
